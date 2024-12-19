@@ -1,8 +1,17 @@
+import Button from "@/components/Button";
+import LogoSmall from "@/components/LogoSmall";
+import LanguageSwitch from "@/components/LanguageSwitch";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      resistancetheatre
+    <div className="flex justify-between items-center">
+      <LogoSmall />
+      <nav><Button>о платформе</Button>
+      <Button>расписание</Button>
+      <Button>проекты</Button>
+      <Button>контакты</Button>
+      </nav>
+      <LanguageSwitch />  
     </div>
   );
 }
