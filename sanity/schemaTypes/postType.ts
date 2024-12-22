@@ -1,5 +1,6 @@
 import {DocumentTextIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
+import {isUniqueOtherThanLanguage} from '../lib/languageValidation'
 
 export const postType = defineType({
   name: 'post',
@@ -16,6 +17,7 @@ export const postType = defineType({
       type: 'slug',
       options: {
         source: 'title',
+        isUnique: isUniqueOtherThanLanguage,
       },
     }),
     defineField({
@@ -50,6 +52,13 @@ export const postType = defineType({
       name: 'body',
       type: 'blockContent',
     }),
+    defineField({
+      // should match 'languageField' plugin configuration setting, if customized
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    })
   ],
   preview: {
     select: {
@@ -63,3 +72,4 @@ export const postType = defineType({
     },
   },
 })
+
